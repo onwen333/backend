@@ -11,8 +11,8 @@ mongoose.set("strictQuery", false);
 const app = express();
 const port = process.env.PORT || 10000;
 
-// CORS
-app.use(cors());
+// CORS - allow credentials for cookies from frontend
+app.use(cors({ origin: process.env.CLIENT_URL || true, credentials: true }));
 
 // Middleware
 app.use(express.json({ limit: "50mb" }));
